@@ -17,6 +17,7 @@ import g10 from '../../../assets/maquinas/gallery-10.jpg';
 import g11 from '../../../assets/maquinas/gallery-11.jpg';
 import g12 from '../../../assets/maquinas/gallery-12.jpg';
 import roypowBattery from '../../../assets/ROYPOW-Forklift-Battery.png';
+import heroVideo from '../../../assets/video.mp4';
 import { ImageModal } from '../components/ImageModal';
 
 export const HomeView: React.FC<{ onNavigate?: (view: string) => void }> = ({ onNavigate }) => {
@@ -45,73 +46,70 @@ export const HomeView: React.FC<{ onNavigate?: (view: string) => void }> = ({ on
 
   return (
     <div className="relative bg-white text-slate-800 font-sans">
-      {/* 1. HERO SECTION (CON SOPORTE PARA VIDEO DE FONDO) */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-slate-950 text-white py-24 px-6 overflow-hidden">
-        {/* Video de Fondo (reemplazar la etiqueta video src cuando tengas el archivo) */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
+      {/* 1. HERO SECTION (COLUMNA DERECHA VACÍA Y VIDEO TOTALMENTE VISIBLE) */}
+      <section className="relative min-h-[88vh] flex items-center bg-slate-950 text-white py-20 px-6 overflow-hidden">
+        {/* Video de Fondo Local descargado (video.mp4) */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-full object-cover opacity-35 scale-105 filter brightness-75"
-            poster="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80"
-          >
-            {/* <source src="/hero-video.mp4" type="video/mp4" /> */}
-          </video>
-          {/* Gradiante superpuesto para garantizar legibilidad perfecta */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/50 z-10" />
-          <div className="absolute inset-0 bg-[radial-gradient(#22c55e_1px,transparent_1px)] [background-size:24px_24px] opacity-20 z-10 pointer-events-none" />
+            src={heroVideo}
+            className="w-full h-full object-cover opacity-100 scale-105 filter brightness-100"
+          />
+          {/* Gradiante horizontal ultra ligero sólo en el lado izquierdo para el texto */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/40 to-transparent z-10 pointer-events-none" />
         </div>
         
-        <div className="max-w-5xl mx-auto text-center space-y-8 relative z-20 w-full">
-          <div className="space-y-4">
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-none text-white">
-              VM Maquinarias
-            </h1>
-            <p className="text-2xl sm:text-4xl font-extrabold text-white">
-              Venta & Alquiler de Montacargas y Apiladores
+        <div className="max-w-7xl mx-auto relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Columna Izquierda (Texto y Botones unificados en color Naranja) */}
+          <div className="lg:col-span-6 text-left space-y-6">
+            <div className="space-y-3">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-none text-white drop-shadow-md">
+                VM Maquinarias
+              </h1>
+              <p className="text-2xl sm:text-3xl font-extrabold text-orange-500">
+                Venta & Alquiler de Montacargas y Apiladores
+              </p>
+            </div>
+            
+            <p className="text-slate-200 text-base sm:text-lg leading-relaxed max-w-xl font-medium drop-shadow">
+              Con más de 20 años de experiencia en el sector logístico y equipos WareHouse, contamos con la mejor relación de calidad/precio en la venta, alquiler y reparación de montacargas y apiladores eléctricos y a combustión, así como en repuestos y baterías de litio.
             </p>
-          </div>
-          
-          <p className="text-slate-200 text-base sm:text-xl leading-relaxed max-w-3xl mx-auto font-normal">
-            Con más de 20 años de experiencia en el sector logístico y equipos WareHouse, contamos con la mejor relación de calidad/precio en la venta, alquiler y reparación de montacargas y apiladores eléctricos y a combustión, así como en repuestos y baterías de litio.
-          </p>
 
-          <div className="pt-4 flex flex-wrap justify-center gap-4 items-center">
-            {onNavigate && (
-              <button
-                onClick={() => onNavigate('catalogo')}
-                className="px-9 py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-black text-lg transition-all duration-300 shadow-xl shadow-blue-600/30 flex items-center gap-3 cursor-pointer transform hover:-translate-y-0.5"
-              >
-                Ver Catálogo de Maquinarias
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </button>
-            )}
-            <a
-              href="#contacto"
-              className="px-9 py-4 rounded-2xl bg-green-600 hover:bg-green-500 text-white font-black text-lg transition-all duration-300 shadow-xl shadow-green-600/30 flex items-center gap-3 cursor-pointer transform hover:-translate-y-0.5"
-            >
-              Solicitar Presupuesto
-            </a>
-            {onNavigate ? (
-              <button
-                onClick={() => onNavigate('reservas')}
-                className="px-9 py-4 rounded-2xl bg-orange-600 hover:bg-orange-500 text-white font-black text-lg backdrop-blur-md transition-all shadow-lg shadow-orange-600/30 cursor-pointer transform hover:-translate-y-0.5"
-              >
-                Reservar Equipo
-              </button>
-            ) : (
+            {/* Un solo esquema de color (Naranja) para los botones */}
+            <div className="pt-2 flex flex-wrap gap-3.5 items-center">
+              {onNavigate && (
+                <button
+                  onClick={() => onNavigate('catalogo')}
+                  className="px-6 py-3.5 rounded-2xl bg-orange-600 hover:bg-orange-500 text-white font-black text-sm uppercase tracking-wider transition-all duration-300 shadow-xl shadow-orange-600/30 flex items-center gap-2 cursor-pointer transform hover:-translate-y-0.5"
+                >
+                  Ver Catálogo
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+              )}
               <a
-                href="#servicios"
-                className="px-9 py-4 rounded-2xl bg-orange-600 hover:bg-orange-500 text-white font-black text-lg transition-all shadow-lg"
+                href="#contacto"
+                className="px-6 py-3.5 rounded-2xl bg-orange-600/90 hover:bg-orange-500 text-white font-black text-sm uppercase tracking-wider transition-all duration-300 shadow-lg cursor-pointer transform hover:-translate-y-0.5"
               >
-                Ver Servicios
+                Solicitar Presupuesto
               </a>
-            )}
+              {onNavigate && (
+                <button
+                  onClick={() => onNavigate('reservas')}
+                  className="px-6 py-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 text-white font-black text-sm uppercase tracking-wider border border-orange-500/50 transition-all shadow-lg cursor-pointer transform hover:-translate-y-0.5"
+                >
+                  Reservar Equipo
+                </button>
+              )}
+            </div>
           </div>
+
+          {/* Columna Derecha COMPLETAMENTE VACÍA para apreciar todo el video */}
+          <div className="hidden lg:block lg:col-span-6 pointer-events-none" />
         </div>
       </section>
 
