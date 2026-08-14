@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import g1 from '../../assets/maquinas/gallery-1.jpg';
-import g2 from '../../assets/maquinas/gallery-2.jpg';
-import g3 from '../../assets/maquinas/gallery-3.jpg';
-import g4 from '../../assets/maquinas/gallery-4.jpg';
-import g5 from '../../assets/maquinas/gallery-5.jpg';
-import g6 from '../../assets/maquinas/gallery-6.jpg';
-import g7 from '../../assets/maquinas/gallery-7.jpg';
-import g8 from '../../assets/maquinas/gallery-8.jpg';
-import g9 from '../../assets/maquinas/gallery-9.jpg';
-import g10 from '../../assets/maquinas/gallery-10.jpg';
-import g11 from '../../assets/maquinas/gallery-11.jpg';
-import g12 from '../../assets/maquinas/gallery-12.jpg';
-import roypowBattery from '../../assets/ROYPOW-Forklift-Battery.png';
-import { ImageModal } from '../components/ImageModal';
+import g1 from '../../../../assets/maquinas/gallery-1.jpg';
+import g2 from '../../../../assets/maquinas/gallery-2.jpg';
+import g3 from '../../../../assets/maquinas/gallery-3.jpg';
+import g4 from '../../../../assets/maquinas/gallery-4.jpg';
+import g5 from '../../../../assets/maquinas/gallery-5.jpg';
+import g6 from '../../../../assets/maquinas/gallery-6.jpg';
+import g7 from '../../../../assets/maquinas/gallery-7.jpg';
+import g8 from '../../../../assets/maquinas/gallery-8.jpg';
+import g9 from '../../../../assets/maquinas/gallery-9.jpg';
+import g10 from '../../../../assets/maquinas/gallery-10.jpg';
+import g11 from '../../../../assets/maquinas/gallery-11.jpg';
+import g12 from '../../../../assets/maquinas/gallery-12.jpg';
+import roypowBattery from '../../../../assets/ROYPOW-Forklift-Battery.png';
+import { ImageModal } from '../../components/ImageModal';
 
 interface CatalogoViewProps {
   onNavigate: (view: string, subId?: string) => void;
