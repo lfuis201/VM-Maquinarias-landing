@@ -12,6 +12,15 @@ import g10 from '../../../../assets/maquinas/gallery-10.jpg';
 import g11 from '../../../../assets/maquinas/gallery-11.jpg';
 import g12 from '../../../../assets/maquinas/gallery-12.jpg';
 import roypowBattery from '../../../../assets/ROYPOW-Forklift-Battery.png';
+
+import m08 from '../../../../assets/maquinarias/venta_alquiler08.png';
+import m09 from '../../../../assets/maquinarias/venta_alquiler09.jpg';
+import m10 from '../../../../assets/maquinarias/venta_alquiler10.jpg';
+import m11 from '../../../../assets/maquinarias/venta_alquiler11.png';
+import m12 from '../../../../assets/maquinarias/venta_alquiler12.jpg';
+import m14 from '../../../../assets/maquinarias/venta_alquiler14.png';
+import m15 from '../../../../assets/maquinarias/venta_alquiler15.png';
+
 import { ImageModal } from '../../components/ImageModal';
 
 interface CatalogoViewProps {
@@ -31,7 +40,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'CPD15L1 / CP20L1 / CPD25L1 / CPD20L2 / EFL 250-300 / CPD45',
       capacity: '2.000K / 2.500K / 3.000K / 5.000K',
       height: '4.8m',
-      image: g10,
+      image: m08,
       badge: 'Tecnología Litio-ION',
       type: 'Montacargas Eléctrico'
     },
@@ -42,7 +51,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'CQD16L / CQD20L',
       capacity: '1.600K / 2.000K',
       height: '8m / 12m',
-      image: g1,
+      image: m11,
       badge: 'Gran Altura 12M',
       type: 'Apilador Retráctil'
     },
@@ -53,7 +62,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'RPL201(H)',
       capacity: '2.000K',
       height: 'Velocidad: 6KM/h – 12KM/h',
-      image: g4,
+      image: m14,
       badge: 'Carga Rápida',
       type: 'Transpaleta Eléctrica'
     },
@@ -66,7 +75,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'FD30N / FG25N / FGC30N',
       capacity: '3.000K',
       height: '4.7m',
-      image: g5,
+      image: m10,
       badge: 'Combustión / Dual',
       type: 'Montacargas a Combustión'
     },
@@ -79,7 +88,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'FLEXI G4',
       capacity: '2.000K',
       height: '11m',
-      image: g2,
+      image: m15,
       badge: 'Pasillo Angosto',
       type: 'Montacargas Articulado'
     },
@@ -90,7 +99,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'FLEXI 1350AC / HI-MAX G4',
       capacity: '2.000K',
       height: '6m',
-      image: g3,
+      image: m12,
       badge: 'Articulado AC',
       type: 'Montacargas Articulado'
     },
@@ -103,7 +112,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'CAT 2C5000 / 2C6000',
       capacity: '2.500K / 3.000K',
       height: '4.8m',
-      image: g6,
+      image: m09,
       badge: 'Alto Rendimiento',
       type: 'Montacargas Industrial'
     },
@@ -116,7 +125,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'CPC70',
       capacity: '7.000K (7 Toneladas)',
       height: '4.5m',
-      image: g7,
+      image: m10,
       badge: 'Carga Pesada 7T',
       type: 'Montacargas Pesado'
     },
@@ -129,7 +138,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'EFG216 / 216K / 320 / 425K',
       capacity: '1.500K / 1.600K / 1.800K / 2.300K',
       height: '5.5m / 5m / 4.4m',
-      image: g8,
+      image: m08,
       badge: 'Ingeniería Alemana',
       type: 'Montacargas Eléctrico'
     },
@@ -140,7 +149,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'EJE-120',
       capacity: '2.000K',
       height: '0.122m',
-      image: g9,
+      image: m14,
       badge: 'Transpaleta Logística',
       type: 'Transpaleta Eléctrica'
     },
@@ -151,7 +160,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'ETM-214',
       capacity: '1.400K',
       height: '7.7m',
-      image: g11,
+      image: m11,
       badge: 'Retráctil Eficiente',
       type: 'Apilador Retráctil'
     },
@@ -162,7 +171,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'ETV 110 / 214 / 20GN',
       capacity: '1.000K / 1.400K / 2.000K',
       height: '6.5m / 9m / 10m',
-      image: g12,
+      image: m15,
       badge: 'Altura Mástil 10m',
       type: 'Apilador Retráctil'
     },
@@ -175,7 +184,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'KCPH02A25PV',
       capacity: '2.500K',
       height: '5.15m',
-      image: g1,
+      image: m12,
       badge: 'Fiabilidad Garantizada',
       type: 'Montacargas a Combustión'
     },
@@ -188,7 +197,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: 'ETM-214',
       capacity: '1.400KG',
       height: '8m',
-      image: g3,
+      image: m11,
       badge: 'STILL Premium',
       type: 'Apilador Retráctil'
     },
@@ -201,7 +210,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: '7FGCU20 / 7FGU30 / 7FGU45 / 8FGCU30 / 5BR13',
       capacity: '2.000K / 3.500K / 4.000K / 3.000K',
       height: '4.7m / 2.3m / 3.3m / 4.75m',
-      image: g5,
+      image: m09,
       badge: 'Líder en Ventas',
       type: 'Montacargas a Combustión'
     },
@@ -212,7 +221,7 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
       model: '5BR13',
       capacity: '1.500K',
       height: '5m',
-      image: g7,
+      image: m15,
       badge: 'Serie 5BR Toyota',
       type: 'Apilador Retráctil'
     }
@@ -262,22 +271,22 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
         {filteredEquipos.map((eq) => (
           <div
             key={eq.id}
-            className="bg-white rounded-3xl border border-slate-200 shadow-md hover:shadow-2xl transition-all overflow-hidden flex flex-col justify-between group"
+            className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
           >
             {/* Foto de la Maquinaria */}
             <div
               onClick={() => setSelectedImage({ name: eq.title, img: eq.image })}
-              className="relative h-64 w-full bg-slate-950 overflow-hidden cursor-pointer flex items-center justify-center p-2"
+              className="relative h-64 w-full bg-white overflow-hidden cursor-pointer flex items-center justify-center p-4 border-b border-slate-100"
             >
               <img
                 src={eq.image}
                 alt={eq.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
               />
-              <span className="absolute top-4 left-4 bg-orange-600 text-white font-black text-[10px] uppercase tracking-wider px-3 py-1 rounded-full shadow-lg">
+              <span className="absolute top-4 left-4 bg-orange-600 text-white font-black text-[10px] uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
                 {eq.badge}
               </span>
-              <span className="absolute bottom-4 right-4 bg-slate-900/90 backdrop-blur-md text-slate-200 font-bold text-xs px-3 py-1 rounded-lg border border-slate-700">
+              <span className="absolute bottom-4 right-4 bg-slate-900 text-slate-200 font-bold text-xs px-3 py-1 rounded-lg">
                 {eq.type}
               </span>
             </div>
@@ -293,12 +302,12 @@ export const CatalogoView: React.FC<CatalogoViewProps> = ({ onNavigate }) => {
                 </h3>
               </div>
 
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-150 space-y-2 text-xs">
-                <div className="flex justify-between items-center border-b border-slate-200 pb-1.5">
+              <div className="p-4 rounded-2xl bg-slate-50 space-y-2 text-xs">
+                <div className="flex justify-between items-center border-b border-slate-200/60 pb-1.5">
                   <span className="text-slate-500 font-bold">MODELO:</span>
                   <span className="text-slate-900 font-black">{eq.model}</span>
                 </div>
-                <div className="flex justify-between items-center border-b border-slate-200 pb-1.5">
+                <div className="flex justify-between items-center border-b border-slate-200/60 pb-1.5">
                   <span className="text-slate-500 font-bold">CAPACIDAD:</span>
                   <span className="text-slate-900 font-black">{eq.capacity}</span>
                 </div>

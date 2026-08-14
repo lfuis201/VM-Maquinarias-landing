@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { toast } from '@heroui/react';
 
+import m08 from '../../../assets/maquinarias/venta_alquiler08.png';
+import m09 from '../../../assets/maquinarias/venta_alquiler09.jpg';
+import m10 from '../../../assets/maquinarias/venta_alquiler10.jpg';
+import m11 from '../../../assets/maquinarias/venta_alquiler11.png';
+import m14 from '../../../assets/maquinarias/venta_alquiler14.png';
+import m15 from '../../../assets/maquinarias/venta_alquiler15.png';
+
 export const ReservasView: React.FC = () => {
   const [formData, setFormData] = useState({
     empresa: '',
@@ -18,6 +25,44 @@ export const ReservasView: React.FC = () => {
 
   const [loading, setLoading] = useState(false);
   const [reservaConfirmada, setReservaConfirmada] = useState(false);
+
+  const opcionesMaquinaria = [
+    {
+      id: 'montacargas-electricos',
+      title: 'Montacargas Eléctrico',
+      subtitle: 'Tecnología Litio-ION / Plomo',
+      capacity: '1.5T - 5.0T',
+      img: m08,
+    },
+    {
+      id: 'montacargas-combustion',
+      title: 'Montacargas a Combustión',
+      subtitle: 'GLP / Diésel Heavy Duty',
+      capacity: '2.5T - 7.0T',
+      img: m10,
+    },
+    {
+      id: 'apilador-retractil',
+      title: 'Apilador Retráctil',
+      subtitle: 'Gran Altura Mástil 12M',
+      capacity: '1.4T - 2.0T',
+      img: m11,
+    },
+    {
+      id: 'montacargas-articulado',
+      title: 'Montacargas Articulado FLEXI',
+      subtitle: 'Pasillo Angosto 1.8M',
+      capacity: '2.0T',
+      img: m15,
+    },
+    {
+      id: 'transpaleta-electrica',
+      title: 'Transpaleta Eléctrica',
+      subtitle: 'Carga Rápida Logística',
+      capacity: '2.0T',
+      img: m14,
+    },
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -85,110 +130,82 @@ export const ReservasView: React.FC = () => {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <h3 className="text-xl font-bold text-slate-900 border-b border-slate-100 pb-4">
-                1. Datos de la Empresa y Contacto
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <h3 className="text-xl font-bold text-slate-900 border-b border-slate-100 pb-4 flex items-center justify-between">
+                <span>1. Selecciona tu Maquinaria o Equipo</span>
+                <span className="text-xs text-orange-600 font-bold uppercase tracking-wider bg-orange-50 px-3 py-1 rounded-full">Paso 1 de 2</span>
               </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700">Razón Social / Empresa *</label>
-                  <input
-                    type="text"
-                    name="empresa"
-                    required
-                    value={formData.empresa}
-                    onChange={handleChange}
-                    placeholder="Ej. Logística Rápida SAC"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-slate-50/50"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700">Persona de Contacto *</label>
-                  <input
-                    type="text"
-                    name="contacto"
-                    required
-                    value={formData.contacto}
-                    onChange={handleChange}
-                    placeholder="Ej. Carlos Mendoza"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-slate-50/50"
-                  />
-                </div>
+              {/* Selector Visual de Maquinarias con Fondo Blanco */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {opcionesMaquinaria.map((maq) => {
+                  const isSelected = formData.tipoMaquinaria === maq.id;
+                  return (
+                    <div
+                      key={maq.id}
+                      onClick={() => setFormData({ ...formData, tipoMaquinaria: maq.id })}
+                      className={`relative p-4 rounded-2xl bg-white border-2 cursor-pointer transition-all duration-200 flex flex-col justify-between group shadow-sm hover:shadow-md ${
+                        isSelected
+                          ? 'border-orange-500 ring-2 ring-orange-500/20 bg-orange-50/10'
+                          : 'border-slate-150 hover:border-slate-300'
+                      }`}
+                    >
+                      {/* Imagen con Fondo Blanco Limpio */}
+                      <div className="h-36 w-full bg-white rounded-xl flex items-center justify-center p-2 mb-3 overflow-hidden">
+                        <img
+                          src={maq.img}
+                          alt={maq.title}
+                          className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+
+                      <div className="space-y-1">
+                        <div className="flex items-center justify-between">
+                          <h4 className="text-sm font-black text-slate-900">
+                            {maq.title}
+                          </h4>
+                          {isSelected && (
+                            <span className="w-5 h-5 bg-orange-600 text-white rounded-full flex items-center justify-center text-xs font-black">
+                              ✓
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-[11px] font-semibold text-slate-500">
+                          {maq.subtitle}
+                        </p>
+                        <span className="inline-block mt-1 text-[10px] font-black uppercase text-orange-600 bg-orange-500/10 px-2 py-0.5 rounded-md">
+                          Capacidad: {maq.capacity}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {/* Especificaciones Técnicas Requeridas */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-2">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700">Correo Corporativo *</label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="carlos@empresa.com"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-slate-50/50"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700">Teléfono / WhatsApp *</label>
-                  <input
-                    type="tel"
-                    name="telefono"
-                    required
-                    value={formData.telefono}
-                    onChange={handleChange}
-                    placeholder="Ej. 997 757 102"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-slate-50/50"
-                  />
-                </div>
-              </div>
-
-              <h3 className="text-xl font-bold text-slate-900 border-b border-slate-100 pb-4 pt-4">
-                2. Especificaciones de Maquinaria
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700">Tipo de Equipo *</label>
-                  <select
-                    name="tipoMaquinaria"
-                    value={formData.tipoMaquinaria}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-white"
-                  >
-                    <option value="montacargas-electricos">Montacargas Eléctrico (Litio-ION / Plomo)</option>
-                    <option value="montacargas-combustion">Montacargas a Combustión (GLP / Diésel)</option>
-                    <option value="apilador-retractil">Apilador Retráctil Eléctrico</option>
-                    <option value="montacargas-articulado">Montacargas Articulado FLEXI</option>
-                    <option value="transpaleta-electrica">Transpaleta Eléctrica</option>
-                  </select>
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700">Tiempo de Alquiler Estimado *</label>
+                  <label className="text-xs font-bold text-slate-700">Tiempo de Alquiler *</label>
                   <select
                     name="duracionAlquiler"
                     value={formData.duracionAlquiler}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-white"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 text-sm bg-white"
                   >
-                    <option value="1-semana">1 Semana (Proyecto Puntual)</option>
+                    <option value="1-semana">1 Semana (Puntual)</option>
                     <option value="1-mes">1 a 3 Meses</option>
-                    <option value="6-meses">6 a 12 Meses (Mediano Plazo)</option>
-                    <option value="mas-1-ano">Más de 1 Año (Largo Plazo)</option>
+                    <option value="6-meses">6 a 12 Meses</option>
+                    <option value="mas-1-ano">Más de 1 Año</option>
                   </select>
                 </div>
-              </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-slate-700">Capacidad Requerida</label>
                   <select
                     name="capacidadCarga"
                     value={formData.capacidadCarga}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-white"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 text-sm bg-white"
                   >
                     <option value="1.5-ton">1.5 Toneladas</option>
                     <option value="2.0-ton">2.0 Toneladas</option>
@@ -204,25 +221,84 @@ export const ReservasView: React.FC = () => {
                     name="alturaElevacion"
                     value={formData.alturaElevacion}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-white"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 text-sm bg-white"
                   >
                     <option value="4.5-metros">4.5 Metros</option>
                     <option value="6-metros">6.0 Metros</option>
                     <option value="8-metros">8.0 Metros</option>
                     <option value="10-metros">10.0 Metros</option>
-                    <option value="12-14-metros">12 a 14 Metros (Pasillo Angosto)</option>
+                    <option value="12-14-metros">12 a 14 Metros</option>
                   </select>
                 </div>
+              </div>
 
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold text-slate-700">Fecha Tentativa de Inicio *</label>
+                <input
+                  type="date"
+                  name="fechaInicio"
+                  required
+                  value={formData.fechaInicio}
+                  onChange={handleChange}
+                  className="w-full sm:w-1/2 px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 text-sm bg-slate-50/50"
+                />
+              </div>
+
+              <h3 className="text-xl font-bold text-slate-900 border-b border-slate-100 pb-4 pt-6 flex items-center justify-between">
+                <span>2. Datos de la Empresa y Contacto</span>
+                <span className="text-xs text-slate-500 font-bold uppercase tracking-wider bg-slate-100 px-3 py-1 rounded-full">Paso 2 de 2</span>
+              </h3>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700">Fecha Tentativa Inicio *</label>
+                  <label className="text-xs font-bold text-slate-700">Razón Social / Empresa *</label>
                   <input
-                    type="date"
-                    name="fechaInicio"
+                    type="text"
+                    name="empresa"
                     required
-                    value={formData.fechaInicio}
+                    value={formData.empresa}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-slate-50/50"
+                    placeholder="Ej. Logística Rápida SAC"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 text-sm bg-slate-50/50"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-slate-700">Persona de Contacto *</label>
+                  <input
+                    type="text"
+                    name="contacto"
+                    required
+                    value={formData.contacto}
+                    onChange={handleChange}
+                    placeholder="Ej. Carlos Mendoza"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 text-sm bg-slate-50/50"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-slate-700">Correo Corporativo *</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="carlos@empresa.com"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 text-sm bg-slate-50/50"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-slate-700">Teléfono / WhatsApp *</label>
+                  <input
+                    type="tel"
+                    name="telefono"
+                    required
+                    value={formData.telefono}
+                    onChange={handleChange}
+                    placeholder="Ej. 997 757 102"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 text-sm bg-slate-50/50"
                   />
                 </div>
               </div>
@@ -235,7 +311,7 @@ export const ReservasView: React.FC = () => {
                   value={formData.ubicacionOperacion}
                   onChange={handleChange}
                   placeholder="Ej. Av. Argentina, Callao / Parque Industrial Lurín"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-slate-50/50"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 text-sm bg-slate-50/50"
                 />
               </div>
 
@@ -247,14 +323,14 @@ export const ReservasView: React.FC = () => {
                   value={formData.comentarios}
                   onChange={handleChange}
                   placeholder="¿Requieres cargador rápido de Batería de Litio, operador o aditamento especial?"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-primary text-sm bg-slate-50/50 resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 text-sm bg-slate-50/50 resize-none"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 bg-secondary hover:bg-secondary-dark text-white font-bold rounded-2xl text-center text-sm transition-all duration-200 cursor-pointer shadow-lg shadow-secondary/20 flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full py-4 bg-orange-600 hover:bg-orange-500 text-white font-black rounded-2xl text-center text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-lg shadow-orange-600/30 flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {loading ? (
                   <>
