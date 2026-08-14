@@ -1,0 +1,9 @@
+node_modules
+dist-ssr
+.git
+.github
+.gitignore
+.vscode
+*.log
+docker-compose*.yml
+README.md

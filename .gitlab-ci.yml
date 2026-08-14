@@ -1,0 +1,21 @@
+stages:
+  - deploy
+
+deploy_production:
+  stage: deploy
+  image: alpine:latest
+  only:
+    - main  # Cambia a 'master' si tu rama principal se llama así
+  before_script:
+    # Instalar cliente SSH y configurar clave privada
+    - apk add --no-cache openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    # Registrar la firma SSH del servidor para evitar preguntas interactivas
+    - ssh-keyscan -H "$SERVER_IP" >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    # Conectarse al servidor, navegar a la carpeta, detener contenedores y reconstruir
+    - ssh $SERVER_USER@$SERVER_IP "cd $PROJECT_DIR && git pull origin main && docker compose down && docker compose up -d --build"

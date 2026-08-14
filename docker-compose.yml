@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  nginx-landing:
+    build: .
+    container_name: landing-web-sistematizate
+    restart: always
+    environment:
+      - VIRTUAL_HOST=sistematizateperu.com
+      - VIRTUAL_PORT=80
+    networks:
+      - default
+      - proxynet
+
+networks:
+  default:
+  proxynet:
+    external:
+      name: proxynet
